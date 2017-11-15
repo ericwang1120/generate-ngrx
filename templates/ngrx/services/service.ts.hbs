@@ -1,0 +1,22 @@
+import { Observable } from 'rxjs/Observable';
+import { {{properCase odd}} } from '../models/{{dashCase odd}}';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class {{properCase odd}}Service {
+  constructor(private http: Http) { }
+
+  public load(): Observable<{{properCase odd}}[]> {
+    return this.http
+      .get(`${API_URL}{{properCase odd}}.JSON`, this.jwt())
+      .map((res) => {
+        return res.json();
+      });
+  }
+
+  private jwt() {
+    let jwtHeaders = new Headers({ 'Content-Type': 'application/json' });
+    return new RequestOptions({ headers: jwtHeaders });
+  }
+}

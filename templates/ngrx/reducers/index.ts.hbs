@@ -1,0 +1,37 @@
+import { createSelector, createFeatureSelector } from '@ngrx/store';
+import * as from{{properCase plural}} from './{{dashCase plural}}';
+import * as fromRoot from '../../';
+
+export interface {{properCase plural}}State {
+    {{camelCase plural}}: from{{properCase plural}}.State;
+}
+
+export interface State extends fromRoot.State {
+    '{{camelCase plural}}': {{properCase plural}}State;
+}
+
+export const reducers = {
+    {{camelCase plural}}: from{{properCase plural}}.reducer,
+};
+
+export const get{{properCase plural}}State = createFeatureSelector<{{properCase plural}}State>('{{camelCase plural}}');
+
+export const get{{properCase odd}}EntitiesState = createSelector(
+    get{{properCase plural}}State,
+    (state) => state.{{camelCase plural}}
+);
+
+export const get{{properCase plural}} = createSelector(
+    get{{properCase odd}}EntitiesState,
+    from{{properCase plural}}.get{{properCase plural}}
+);
+
+export const getLoaded = createSelector(
+    get{{properCase odd}}EntitiesState,
+    from{{properCase plural}}.getLoaded
+);
+
+export const getLoading = createSelector(
+    get{{properCase odd}}EntitiesState,
+    from{{properCase plural}}.getLoading
+);

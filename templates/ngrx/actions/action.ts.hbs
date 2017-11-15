@@ -1,0 +1,27 @@
+import { Action } from '@ngrx/store';
+import { {{properCase odd}} } from '../models/{{dashCase odd}}';
+// tslint:disable:max-classes-per-file
+
+export const LOAD = '[{{titleCase odd}}] Load';
+export const LOAD_SUCCESS = '[{{titleCase odd}}] Load Success';
+export const LOAD_FAIL = '[{{titleCase odd}}] Load Fail';
+
+export class Load implements Action {
+    public readonly type = LOAD;
+}
+
+export class LoadSuccess implements Action {
+    public readonly type = LOAD_SUCCESS;
+
+    constructor(public payload: {{properCase odd}}[]) { }
+}
+
+export class LoadFail implements Action {
+    public readonly type = LOAD_FAIL;
+
+    constructor(public payload: any) { }
+}
+
+export type Actions = Load
+    | LoadSuccess
+    | LoadFail;

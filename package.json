@@ -1,0 +1,29 @@
+{
+  "name": "generate-ngrx",
+  "version": "1.0.0",
+  "description": "generators for ngrx, based on best practices from ngrx/platform",
+  "main": "index.js",
+  "scripts": {
+    "plop": "plop"
+  },
+  "keywords": [
+    "ngrx",
+    "ngrx generator",
+    "ngrx effects",
+    "ngrx reducer",
+    "ngrx action"
+  ],
+  "author": "Eric Wang",
+  "license": "MIT",
+  "bin": {
+    "gen-ngrx": "index.js"
+  },
+  "dependencies": {
+    "find-package-json": "^1.0.0",
+    "lodash.get": "^4.4.2",
+    "npm-run": "^4.1.2",
+    "pkg-dir": "^2.0.0",
+    "plop": "^1.9.0",
+    "shelljs": "^0.7.8"
+  }
+}

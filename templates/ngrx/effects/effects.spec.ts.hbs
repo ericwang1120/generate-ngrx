@@ -1,0 +1,78 @@
+import { TestBed } from '@angular/core/testing';
+import { Actions } from '@ngrx/effects';
+import { cold, hot, getTestScheduler } from 'jasmine-marbles';
+import { empty } from 'rxjs/observable/empty';
+import { {{properCase odd}}Effects, LOAD_SCHEDULER, LOAD_DEBOUNCE } from './{{dashCase odd}}';
+import { {{properCase odd}}Service } from '../services/{{dashCase odd}}';
+import { Observable } from 'rxjs/Observable';
+import { Load, LoadSuccess, LoadFail } from '../actions/{{dashCase odd}}';
+import { {{properCase odd}}, generateMock{{properCase odd}} } from '../models/{{dashCase odd}}';
+
+export class TestActions extends Actions {
+    constructor() {
+        super(empty());
+    }
+
+    set stream(source: Observable<any>) {
+        this.source = source;
+    }
+}
+
+export function getActions() {
+    return new TestActions();
+}
+
+describe('{{properCase odd}}Effects', () => {
+    let effects: {{properCase odd}}Effects;
+    let {{camelCase odd}}Service: any;
+    let actions$: TestActions;
+
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            providers: [
+                {{properCase odd}}Effects,
+                {
+                    provide: {{properCase odd}}Service,
+                    useValue: jasmine.createSpyObj('{{camelCase odd}}Service', ['load']),
+                },
+                { provide: Actions, useFactory: getActions },
+                { provide: LOAD_SCHEDULER, useFactory: getTestScheduler },
+                { provide: LOAD_DEBOUNCE, useValue: 30 },
+            ],
+        });
+
+        effects = TestBed.get({{properCase odd}}Effects);
+        {{camelCase odd}}Service = TestBed.get({{properCase odd}}Service);
+        actions$ = TestBed.get(Actions);
+    });
+
+    describe('load$', () => {
+        it('should load successful', () => {
+            const {{camelCase odd}}1 = generateMock{{properCase odd}}();
+            const {{camelCase odd}}2 = { ...{{camelCase odd}}1, id: '222' };
+            const {{camelCase plural}} = [{{camelCase odd}}2, {{camelCase odd}}2];
+
+            const action = new Load();
+            const completion = new LoadSuccess({{camelCase plural}});
+
+            actions$.stream = hot('-a----', { a: action });
+            const response = cold('-a|', { a: {{camelCase plural}} });
+            const expected = cold('-----b', { b: completion });
+            {{camelCase odd}}Service.load = () => response;
+            expect(effects.load$).toBeObservable(expected);
+        });
+
+        it('should load fail', () => {
+            const action = new Load();
+            const completion = new LoadFail('Unexpected Error. Try again later.');
+            const error = 'Unexpected Error. Try again later.';
+
+            actions$.stream = hot('-a----', { a: action });
+            const response = cold('-#|', {}, error);
+            const expected = cold('-----b', { b: completion });
+            {{camelCase odd}}Service.load = () => response;
+
+            expect(effects.load$).toBeObservable(expected);
+        });
+    });
+});

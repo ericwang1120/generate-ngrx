@@ -1,0 +1,55 @@
+import { createSelector } from '@ngrx/store';
+import { {{properCase odd}}, generateMock{{properCase odd}} } from '../models/{{dashCase odd}}';
+import * as {{camelCase odd}} from '../actions/{{dashCase odd}}';
+
+export interface State {
+    loaded: boolean;
+    loading: boolean;
+    {{camelCase plural}}: {{properCase odd}}[];
+}
+
+export const initialState: State = {
+    loaded: false,
+    loading: false,
+    {{camelCase plural}}: [],
+};
+
+export function reducer(
+    state = initialState,
+    action: {{camelCase odd}}.Actions
+): State {
+    switch (action.type) {
+        case {{camelCase odd}}.LOAD: {
+            return {
+                ...state,
+                loading: true,
+            };
+        }
+
+        case {{camelCase odd}}.LOAD_SUCCESS: {
+            return {
+                loaded: true,
+                loading: false,
+                {{camelCase plural}}: action.payload,
+            };
+        }
+
+        case {{camelCase odd}}.LOAD_FAIL: {
+            return {
+                loaded: true,
+                loading: false,
+                {{camelCase plural}}: [],
+            };
+        }
+
+        default: {
+            return state;
+        }
+    }
+}
+
+export const getLoaded = (state: State) => state.loaded;
+
+export const getLoading = (state: State) => state.loading;
+
+export const get{{properCase plural}} = (state: State) => state.{{camelCase plural}};

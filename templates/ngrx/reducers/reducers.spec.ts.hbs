@@ -1,0 +1,89 @@
+import { reducer } from './{{dashCase plural}}';
+import * as from{{properCase plural}} from './{{dashCase plural}}';
+import { Load, LoadFail, LoadSuccess } from '../actions/{{dashCase odd}}';
+import { {{properCase odd}}, generateMock{{properCase odd}} } from '../models/{{dashCase odd}}';
+
+describe('{{properCase plural}}Reducer', () => {
+    const {{camelCase odd}}1 = generateMock{{properCase odd}}();
+    const {{camelCase odd}}2 = { ...{{camelCase odd}}1, id: '222' };
+    const {{camelCase odd}}3 = { ...{{camelCase odd}}1, id: '333' };
+    const initialState: from{{properCase plural}}.State = {
+        loaded: false,
+        loading: false,
+        {{camelCase plural}}: [],
+    };
+
+    describe('undefined action', () => {
+        it('should return the default state', () => {
+            const result = reducer(undefined, {} as any);
+
+            expect(result).toEqual(initialState);
+        });
+    });
+
+    describe('LOAD', () => {
+        const expectedResult = {
+            loaded: false,
+            loading: true,
+            {{camelCase plural}}: [],
+        };
+
+        it('should change loading to true', () => {
+            const action = new Load();
+
+            const result = reducer(initialState, action);
+
+            expect(result).toEqual(expectedResult);
+        });
+    });
+
+    describe('LOAD_SUCCESS', () => {
+        const expectedResult = {
+            loaded: true,
+            loading: false,
+            {{camelCase plural}}: [{{camelCase odd}}2, {{camelCase odd}}3],
+        };
+
+        it('should load {{camelCase plural}}', () => {
+            const action = new LoadSuccess([{{camelCase odd}}2, {{camelCase odd}}3]);
+
+            const result = reducer(initialState, action);
+
+            expect(result).toEqual(expectedResult);
+        });
+    });
+
+    describe('LOAD_FAIL', () => {
+        const expectedResult = {
+            loaded: true,
+            loading: false,
+            {{camelCase plural}}: [],
+        };
+
+        it('return empty array of {{camelCase plural}} when load fail', () => {
+            const action = new LoadFail('Error Message');
+
+            const result = reducer(initialState, action);
+
+            expect(result).toEqual(expectedResult);
+        });
+    });
+
+    describe('selectors', () => {
+        const expectedResult = {
+            loaded: true,
+            loading: false,
+            {{camelCase plural}}: [],
+        };
+
+        it('should return correct selector', () => {
+            const loaded = expectedResult.loaded;
+            const loading = expectedResult.loading;
+            const {{camelCase plural}} = expectedResult.{{camelCase plural}};
+
+            expect(from{{properCase plural}}.getLoaded(expectedResult)).toEqual(loaded);
+            expect(from{{properCase plural}}.getLoading(expectedResult)).toEqual(loading);
+            expect(from{{properCase plural}}.get{{properCase plural}}(expectedResult)).toEqual({{camelCase plural}});
+        });
+    });
+});
