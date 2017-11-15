@@ -11,7 +11,7 @@ npm install generate-ngrx -g
 ```
 gen-ngrx
 ```
-Notice: this generator can only be used in node project.
+Notice: this generator can only be used in node project, for ngrx4.
 
 Currently, this generator will generate the following files in your **working directory**
 ```
@@ -43,6 +43,10 @@ you can add these lines in your package.json
 }
 ```
 Then files will be generated based on the configured path.
+
+## projects using the generator
+[angular-boilerplate](https://angularb.github.io/): A boilerplate which is based on ngrx4, material design  
+[source code](https://github.com/ericwang1120/angular-boilerplate)
 
 ## License
 MIT

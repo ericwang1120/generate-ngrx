@@ -1,6 +1,6 @@
 {
   "name": "generate-ngrx",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "generators for ngrx, based on best practices from ngrx/platform",
   "main": "index.js",
   "scripts": {
