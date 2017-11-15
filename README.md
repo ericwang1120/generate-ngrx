@@ -6,7 +6,7 @@
 # Getting Started
 Install it via npm
 ```
-npm install gen-ngrx -g
+npm install generate-ngrx -g
 ```
 ```
 gen-ngrx
