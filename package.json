@@ -1,6 +1,6 @@
 {
   "name": "generate-ngrx",
-  "version": "1.0.0",
+  "version": "0.8.0",
   "description": "generators for ngrx, based on best practices from ngrx/platform",
   "main": "index.js",
   "scripts": {
@@ -10,11 +10,16 @@
     "ngrx",
     "ngrx generator",
     "ngrx effects",
+    "ngrx/store",
     "ngrx reducer",
     "ngrx action"
   ],
   "author": "Eric Wang",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ericwang1120/generate-ngrx"
+  },
   "bin": {
     "gen-ngrx": "index.js"
   },
