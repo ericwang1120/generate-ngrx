@@ -1,0 +1,33 @@
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { {{properCase moduleName}}Component } from './{{dashCase moduleName}}.component';
+
+// lazy loading
+import { RouterModule } from '@angular/router';
+import { routes } from './{{dashCase moduleName}}.routes';
+
+// ngrx
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers } from '../{{>moduleToNgrxPath}}/{{dashCase plural}}/reducers';
+import { {{properCase odd}}Effects } from '../{{>moduleToNgrxPath}}/{{dashCase plural}}/effects/{{dashCase odd}}';
+import { {{properCase odd}}Service } from '../{{>moduleToNgrxPath}}/{{dashCase plural}}/services/{{dashCase odd}}';
+
+@NgModule({
+  declarations: [
+    {{properCase moduleName}}Component,
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('{{camelCase plural}}', reducers),
+    EffectsModule.forFeature([{{properCase odd}}Effects]),
+  ],
+  providers: [
+    {{properCase odd}}Service,
+  ]
+})
+export class {{properCase moduleName}}Module {
+}

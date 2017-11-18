@@ -15,15 +15,28 @@ module.exports = {
     type: 'input',
     name: 'odd',
     default: 'item',
-    message: 'Type in odd name the resource',
+    message: 'Type in singular name of the resource',
   }, {
     type: 'input',
     name: 'plural',
-    message: 'Type in plural name the resource',
+    message: 'Type in plural name of the resource',
     default: 'items',
+  }, {
+    type: 'confirm',
+    name: 'needNgModule',
+    message: 'Do you need to create a new ngModule?',
+    default: true,
+  }, {
+    type: 'input',
+    name: 'moduleName',
+    message: 'Type in module name (like book-page)',
+    default: 'item-page',
+    when: function (data) {
+      return data.needNgModule;
+    },
   }],
 
-  actions: function () {
+  actions: function (data) {
     let actions = [{
       type: 'add',
       path: config.baseNgrxPath + '/{{dashCase plural}}/actions/{{dashCase odd}}.ts',
@@ -62,9 +75,39 @@ module.exports = {
     if (!config.rootStateExisted) {
       actions.push({
         type: 'add',
-        path: config.baseNgrxPath + '/index.ts',
+        path: config.rootReducerPath,
         templateFile: './templates/ngrx/index.ts.hbs'
       })
+    }
+
+    if (data.needNgModule) {
+      // create ngModule
+      actions.push({
+        type: 'add',
+        path: config.pagesFolder + '/{{dashCase moduleName}}/{{dashCase moduleName}}.module.ts',
+        templateFile: './templates/component/module.ts.hbs'
+      }, {
+          type: 'add',
+          path: config.pagesFolder + '/{{dashCase moduleName}}/{{dashCase moduleName}}.component.ts',
+          templateFile: './templates/component/component.ts.hbs'
+        }, {
+          type: 'add',
+          path: config.pagesFolder + '/{{dashCase moduleName}}/{{dashCase moduleName}}.component.html',
+          templateFile: './templates/component/component.html.hbs'
+        }, {
+          type: 'add',
+          path: config.pagesFolder + '/{{dashCase moduleName}}/{{dashCase moduleName}}.component.scss',
+          templateFile: './templates/component/component.scss.hbs'
+        }, {
+          type: 'add',
+          path: config.pagesFolder + '/{{dashCase moduleName}}/index.ts',
+          templateFile: './templates/component/index.ts.hbs'
+        }, {
+          type: 'add',
+          path: config.pagesFolder + '/{{dashCase moduleName}}/{{dashCase moduleName}}.routes.ts',
+          templateFile: './templates/component/component.routes.ts.hbs'
+        }
+      );
     }
 
     return actions;
