@@ -80,6 +80,14 @@ module.exports = {
       })
     }
 
+    if(!config.reducerUtilsExisted){
+      actions.push({
+        type: 'add',
+        path: config.reducerUtilsPath,
+        templateFile: './templates/ngrx/utils.ts.hbs'
+      })
+    }
+
     if (data.needNgModule) {
       // create ngModule
       actions.push({

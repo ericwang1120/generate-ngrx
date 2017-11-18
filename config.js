@@ -9,7 +9,12 @@ const featureReducerPath = path.resolve(loadPathFromConfig('baseNgrxPath'), 'ngr
 
 const rootReducerPath = loadPathFromConfig('rootReducerPath') !== path.resolve(process.cwd(), '.') ?
     loadPathFromConfig('rootReducerPath') : path.resolve(process.cwd(), 'index.ts');
-// root reducer need to be imported into the index.ts of feature reducer, so relative path need to be figured out
+const reducerUtilsPath = path.resolve(rootReducerPath, '..', 'utils.ts');
+
+/**
+ * root reducer need to be imported into the index.ts of feature reducer,
+ * so relative path need to be figured out
+ */
 const featureToRootReducerPath = path
     .relative(featureReducerPath, rootReducerPath)
     .replace('.ts', '')
@@ -19,13 +24,20 @@ const moduleToNgrxPath = path
     .relative(loadPathFromConfig('pagesFolder'), loadPathFromConfig('baseNgrxPath'))
     .replace(/\\/g, '/');
 
+const envToRootReducerPath = path
+    .relative(path.resolve(rootReducerPath, '..'), path.resolve(pkgDir.sync(process.cwd()), './src/environments/environment'))
+    .replace(/\\/g, '/');
+
 module.exports = {
     pagesFolder: loadPathFromConfig('pagesFolder'),
     baseNgrxPath: loadPathFromConfig('baseNgrxPath'),
     rootReducerPath: rootReducerPath,
+    reducerUtilsPath: reducerUtilsPath,
     rootStateExisted: fs.existsSync(rootReducerPath),
+    reducerUtilsExisted: fs.existsSync(reducerUtilsPath),
     featureToRootReducerPath: featureToRootReducerPath,
-    moduleToNgrxPath: moduleToNgrxPath
+    moduleToNgrxPath: moduleToNgrxPath,
+    envToRootReducerPath, envToRootReducerPath
 }
 
 // get configured path from package.json
@@ -37,4 +49,4 @@ function loadPathFromConfig(propertyName) {
     return path.resolve(process.cwd(), '.');
 }
 
-console.log(moduleToNgrxPath);
+console.log(envToRootReducerPath);

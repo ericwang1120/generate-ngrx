@@ -9,14 +9,14 @@ export class {{properCase odd}}Service {
 
   public load(): Observable<{{properCase odd}}[]> {
     return this.http
-      .get(`${API_URL}{{properCase odd}}.JSON`, this.jwt())
+      .get(`https://api.myapi.com`, this.jwt())
       .map((res) => {
         return res.json();
       });
   }
 
   private jwt() {
-    let jwtHeaders = new Headers({ 'Content-Type': 'application/json' });
+    const jwtHeaders = new Headers({ 'Content-Type': 'application/json' });
     return new RequestOptions({ headers: jwtHeaders });
   }
 }
