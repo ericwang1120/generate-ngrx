@@ -1,0 +1,30 @@
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+// ngrx
+import { Store } from '@ngrx/store';
+import * as from{{properCase plural}} from '../{{>moduleToNgrxPath}}/{{dashCase plural}}/reducers';
+import * as {{camelCase odd}} from '../{{>moduleToNgrxPath}}/{{dashCase plural}}/actions/{{dashCase odd}}';
+import { {{properCase odd}} } from '../{{>moduleToNgrxPath}}/{{dashCase plural}}/models/{{dashCase odd}}';
+
+@Component({
+  selector: 'app-{{dashCase moduleName}}',
+  styleUrls: ['./{{dashCase moduleName}}.component.scss'],
+  templateUrl: './{{dashCase moduleName}}.component.html'
+})
+export class {{properCase moduleName}}Component implements OnInit {
+  public {{camelCase plural}}$: Observable<{{properCase odd}}[]>;
+
+  constructor(
+    private store: Store<from{{properCase plural}}.State>
+  ) {
+    this.{{camelCase plural}}$ = store.select(from{{properCase plural}}.get{{properCase plural}});
+  }
+
+  public ngOnInit(): void {
+    this.store.dispatch(new {{camelCase odd}}.Load());
+  }
+}

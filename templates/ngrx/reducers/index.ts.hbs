@@ -1,6 +1,7 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import * as from{{properCase plural}} from './{{dashCase plural}}';
-import * as fromRoot from '../../';
+import * as fromRoot from '{{>featureToRootReducerPath}}';
+
 
 export interface {{properCase plural}}State {
     {{camelCase plural}}: from{{properCase plural}}.State;
