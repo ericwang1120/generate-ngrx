@@ -48,5 +48,3 @@ function loadPathFromConfig(propertyName) {
     }
     return path.resolve(process.cwd(), '.');
 }
-
-console.log(envToRootReducerPath);
