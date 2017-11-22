@@ -1,3 +1,9 @@
+/**
+ * this file is used to load configs from package.json, then using 'node-path' library
+ * to generate necessary infos(e.g. relative paths) so that they can be exported as modules. 
+ */ 
+
+
 const get = require('lodash.get');
 const finder = require('find-package-json');
 const pjson = finder().next().value;
@@ -20,10 +26,16 @@ const featureToRootReducerPath = path
     .replace('.ts', '')
     .replace(/\\/g, '/');
 
+/**
+ * Relative path from ngModule to featureReducer
+ */
 const moduleToNgrxPath = path
     .relative(loadPathFromConfig('pagesFolder'), loadPathFromConfig('baseNgrxPath'))
     .replace(/\\/g, '/');
 
+/**
+ * Relative path from environment to root reducer
+ */
 const envToRootReducerPath = path
     .relative(path.resolve(rootReducerPath, '..'), path.resolve(pkgDir.sync(process.cwd()), './src/environments/environment'))
     .replace(/\\/g, '/');

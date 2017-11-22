@@ -1,5 +1,5 @@
 /**
- * Ngrx Only Generator
+ * Ngrx Generator with containers
  */
 
 /* eslint strict: ["off"] */
@@ -71,7 +71,7 @@ module.exports = {
       templateFile: './templates/ngrx/reducers/index.ts.hbs'
     }];
 
-    // The root reducer is necessary
+    // Check if root reducer is already existed
     if (!config.rootStateExisted) {
       actions.push({
         type: 'add',
@@ -88,6 +88,7 @@ module.exports = {
       })
     }
 
+    // need to create a container
     if (data.needNgModule) {
       // create ngModule
       actions.push({

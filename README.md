@@ -11,7 +11,7 @@ Currently, I am working on a [post](https://ericwangblog.github.io/Generate-Your
 
 If you have any problem or good idea, feel free to [create a new issue](https://github.com/ericwang1120/generate-ngrx/issues) so we'll be able to discuss.
 
-If you like this generator, check the [source code]((https://github.com/ericwang1120/generate-ngrx)) and give me a star, many thanks.
+If you like this generator, check the [source code](https://github.com/ericwang1120/generate-ngrx) and give me a star, many thanks.
 
 ## Install Globally
 
