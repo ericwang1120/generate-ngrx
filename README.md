@@ -7,6 +7,12 @@ Code Generator for ngrx, following best practices from [ngrx/platform/example-ap
 
 Notice: this generator can only be used in node project, for ngrx4.
 
+Currently, I am working on a [post](https://ericwangblog.github.io/Generate-Your-Ngrx/) which may help you to start a ngrx project with angular-cli and this generator. [click to see the post](https://ericwangblog.github.io/Generate-Your-Ngrx/)
+
+If you have any problem or good idea, feel free to [create a new issue](https://github.com/ericwang1120/generate-ngrx/issues) so we'll be able to discuss.
+
+If you like this generator, check the [source code]((https://github.com/ericwang1120/generate-ngrx)) and give me a star, many thanks.
+
 ## Install Globally
 
 You can install it globally then playing around with it at any ngrx projects.
