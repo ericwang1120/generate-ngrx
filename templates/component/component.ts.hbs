@@ -21,7 +21,7 @@ export class {{properCase moduleName}}Component implements OnInit {
   constructor(
     private store: Store<from{{properCase plural}}.State>
   ) {
-    this.{{camelCase plural}}$ = store.select(from{{properCase plural}}.get{{properCase plural}});
+    this.{{camelCase plural}}$ = store.select(from{{properCase plural}}.getAll{{properCase plural}});
   }
 
   public ngOnInit(): void {

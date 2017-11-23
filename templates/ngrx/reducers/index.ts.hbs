@@ -21,15 +21,12 @@ export const get{{properCase odd}}EntitiesState = createSelector(
     (state) => state.{{camelCase plural}}
 );
 
-export const get{{properCase plural}} = createSelector(
-    get{{properCase odd}}EntitiesState,
-    from{{properCase plural}}.get{{properCase plural}}
-);
-
-export const getLoaded = createSelector(
-    get{{properCase odd}}EntitiesState,
-    from{{properCase plural}}.getLoaded
-);
+export const {
+    selectIds: get{{properCase odd}}Ids,
+    selectEntities: get{{properCase odd}}Entities,
+    selectAll: getAll{{properCase plural}},
+    selectTotal: getTotal{{properCase plural}},
+  } = from{{properCase plural}}.adapter.getSelectors(get{{properCase odd}}EntitiesState);
 
 export const getLoading = createSelector(
     get{{properCase odd}}EntitiesState,

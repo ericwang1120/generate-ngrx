@@ -1,18 +1,20 @@
 import { createSelector } from '@ngrx/store';
-import { {{properCase odd}}, generateMock{{properCase odd}} } from '../models/{{dashCase odd}}';
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { {{properCase odd}} } from '../models/{{dashCase odd}}';
 import * as {{camelCase odd}} from '../actions/{{dashCase odd}}';
 
-export interface State {
-    loaded: boolean;
+export interface State extends EntityState<{{properCase odd}}> {
     loading: boolean;
-    {{camelCase plural}}: {{properCase odd}}[];
 }
 
-export const initialState: State = {
-    loaded: false,
+export const adapter: EntityAdapter<{{properCase odd}}> = createEntityAdapter<{{properCase odd}}>({
+    selectId: (obj: {{properCase odd}}) => obj.id,
+    sortComparer: false,
+});
+
+export const initialState: State = adapter.getInitialState({
     loading: false,
-    {{camelCase plural}}: [],
-};
+});
 
 export function reducer(
     state = initialState,
@@ -28,17 +30,15 @@ export function reducer(
 
         case {{camelCase odd}}.LOAD_SUCCESS: {
             return {
-                loaded: true,
+                ...adapter.addAll(action.payload, state),
                 loading: false,
-                {{camelCase plural}}: action.payload,
             };
         }
 
         case {{camelCase odd}}.LOAD_FAIL: {
             return {
-                loaded: true,
+                ...adapter.removeAll(state),
                 loading: false,
-                {{camelCase plural}}: [],
             };
         }
 
@@ -48,8 +48,4 @@ export function reducer(
     }
 }
 
-export const getLoaded = (state: State) => state.loaded;
-
 export const getLoading = (state: State) => state.loading;
-
-export const get{{properCase plural}} = (state: State) => state.{{camelCase plural}};
