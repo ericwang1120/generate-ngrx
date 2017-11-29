@@ -16,17 +16,17 @@ import { {{properCase odd}}Service } from '../{{>moduleToNgrxPath}}/{{dashCase p
 
 @NgModule({
   declarations: [
-    {{properCase moduleName}}Component,
+    {{properCase moduleName}}Component
   ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('{{camelCase plural}}', reducers),
-    EffectsModule.forFeature([{{properCase odd}}Effects]),
+    EffectsModule.forFeature([{{properCase odd}}Effects])
   ],
   providers: [
-    {{properCase odd}}Service,
+    {{properCase odd}}Service
   ]
 })
 export class {{properCase moduleName}}Module {

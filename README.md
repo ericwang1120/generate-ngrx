@@ -1,7 +1,15 @@
 # generate-ngrx
 
 Code Generator for ngrx, following best practices from [ngrx/platform/example-app](https://github.com/ngrx/platform/tree/master/example-app)
-![](_screenshots/generator.gif)
+![](_screenshots/generator.gif).
+
+Production ready now. Tested in [ngrx-todo](https://ericwangdemo.github.io/). [source code](https://github.com/ericwang1120/ngrx-todo)
+
+## projects using the generator
+
+[ngrx-todo](https://ericwangdemo.github.io/): TodoMVC written in Angular5 and Ngrx. [source code](https://github.com/ericwang1120/ngrx-todo)
+
+[angular-boilerplate](https://angularb.github.io/): A boilerplate which is based on ngrx4, material design. [source code](https://github.com/ericwang1120/angular-boilerplate)
 
 ## Getting Started
 
@@ -89,12 +97,6 @@ Then
 ```bash
 npm run generate
 ```
-
-## projects using the generator
-
-[angular-boilerplate](https://angularb.github.io/): A boilerplate which is based on ngrx4, material design
-
-[source code](https://github.com/ericwang1120/angular-boilerplate)
 
 ## License
 
